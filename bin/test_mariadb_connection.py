@@ -1,23 +1,17 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 
-import mysql.connector as mariadb
-mariadb_connection = mariadb.connect(user='root', password='mypass', host='172.17.0.4', database='varun')
-cursor = mariadb_connection.cursor()
+import pymysql
 
-# retrieving information
-some_name = 'varun'
-cursor.execute("SELECT first_name,last_name FROM authors WHERE first_name=%s", (some_name,))
+mariadb_connection = pymysql.connect(host='vsharma-mariadb', port=3306, user='root', passwd='mypass', db='messaround')
 
-for first_name, last_name in cursor:
-    print("First name: {}, Last name: {}").format(first_name, last_name)
+cur = mariadb_connection.cursor()
+cur.execute("SELECT * FROM authors")
 
-# # insert information
-# try:
-#     cursor.execute("INSERT INTO authors (first_name,last_name) VALUES (%s,%s)", ('Maria', 'DB'))
-# except mariadb.Error as error:
-#     print("Error: {}".format(error))
-#
-# mariadb_connection.commit()
-# print("The last inserted id was: ", cursor.lastrowid)
+print(cur.description)
+print()
 
+for row in cur:
+    print(row)
+
+cur.close()
 mariadb_connection.close()

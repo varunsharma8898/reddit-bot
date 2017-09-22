@@ -7,8 +7,8 @@ use DBI;
 use Data::Dumper;
 $Data::Dumper::Sortkeys = 1;
 
-my $database = "varun";
-my $hostname = "172.17.0.4";
+my $database = "messaround";
+my $hostname = "vsharma-mariadb";
 my $port     = "3306";
 my $user     = "root";
 my $password = "mypass";
