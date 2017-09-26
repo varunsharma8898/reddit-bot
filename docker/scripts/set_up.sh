@@ -8,9 +8,8 @@ if [ "$SOURCE" = "" ]; then
     exit 1
 fi
 
-ls -al $SOURCE
-
 cp $SOURCE/bin/* /opt/scripts/
 chmod a+x /opt/scripts/*
 
-
+# It seems something is messing up with LWP::Protocol::https
+apt-get -qqy install liblwp-protocol-https-perl
