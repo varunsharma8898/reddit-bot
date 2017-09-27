@@ -9,6 +9,9 @@ if [ "$SOURCE" = "" ]; then
 fi
 
 cp $SOURCE/bin/* /opt/scripts/
+cp $SOURCE/config/* /opt/config/
+cp $SOURCE/static/* /opt/static/
+
 chmod a+x /opt/scripts/*
 
 # It seems something is messing up with LWP::Protocol::https

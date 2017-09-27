@@ -23,6 +23,7 @@ my $reddit = Reddit::Client->new(
 );
 
 use Data::Dumper;
+$Data::Dumper::Sortkeys = 1;
 print "\n\ndone" . Dumper($reddit);
 
 my $links = $reddit->fetch_links(subreddit => '/r/cricket', limit => 10);
